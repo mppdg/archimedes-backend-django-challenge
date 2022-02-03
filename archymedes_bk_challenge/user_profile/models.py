@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+
+class Profile(models.Model):
+    USER_ROLES = [("User", 'User'), ("Admin", 'Admin')]
+
+    name = models.CharField(max_length=255)
+    email = models.EmailField(unique=True)
+    role = models.CharField(max_length=5, choices=USER_ROLES, default="User")
