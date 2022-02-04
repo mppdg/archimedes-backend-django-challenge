@@ -7,7 +7,7 @@ from ..serializers import ProfileSerializer
 
 client = Client()
 
-class GetAllProfilesTest(TestCase):
+class GetAllUsersTest(TestCase):
     """ Test module for GET all users API """
 
     def setUp(self):
