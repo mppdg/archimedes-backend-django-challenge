@@ -47,11 +47,11 @@ class ProfileView(APIView):
 
 
 class Custom404View(APIView):
-    """Custom View for unmatch url"""
+    """Custom View for undefined endpoints"""
 
     data = {
-        'api_urls': ['/api/v1/users/', '/api/v1/users/<int:user_id>'],
-        'message': 'The API endpoint does not exist.'
+        'api_docs': '/api/docs',
+        'message': 'The API endpoint is not defined. Please see api docs'
     }
 
     def get(self, request):
