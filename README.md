@@ -2,6 +2,10 @@
 This project attempt to follow the design and requirements found [here](https://github.com/Archimydes/node-backend-bootstrap)
 I was specifically told to implement the backend using Django.
 
+## API Documentation
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/7e401cfc2e68aecad236?action=collection%2Fimport)
+
+
 ## Requirements
 
 - [Python 3.8 or higher](https://www.python.org/) - The python programming language interpreter
