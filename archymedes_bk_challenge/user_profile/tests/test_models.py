@@ -6,10 +6,8 @@ class ProfileTest(TestCase):
     """ Test module for Profile model """
     
     def setUp(self):
-        Profile.objects.create(
-            name='Tester One', email="one@tester.com", role='User')
-        Profile.objects.create(
-            name='Tester Two', email="two@tester.com", role='Admin')
+        Profile.objects.create(name='Tester One', email="one@tester.com", role='User')
+        Profile.objects.create(name='Tester Two', email="two@tester.com", role='Admin')
 
     def test_profile_entry(self):
         tester_one = Profile.objects.get(email='one@tester.com')
