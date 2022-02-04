@@ -81,3 +81,20 @@ class UpdateSingleUserTest(TestCase):
                                data=json.dumps(self.invalid_payload),
                                content_type='application/json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+
+class DeleteSingleUserTest(TestCase):
+    """ Test module for deleting a user profile """
+
+    def setUp(self):
+        self.tester_five = Profile.objects.create(name='Tester Five', email="five@tester.com", role='User')
+        self.tester_six = Profile.objects.create(name='Tester Six', email="six@tester.com", role='Admin')
+
+    def test_valid_delete_user(self):
+        response = client.delete(reverse('update_delete_user', kwargs={'user_id': self.tester_five.pk}))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_invalid_delete_user(self):
+        response = client.delete(
+            reverse('update_delete_user', kwargs={'user_id': 470}))
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
