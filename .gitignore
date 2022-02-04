@@ -1,3 +1,13 @@
+.idea
+.env
+.vscode
+.DS_STORE
+__pycache__
 venv
-/venv
-.idea/
+.venv
+.pytest_cache
+.pytest_cache/v/cache
+*.pyc
+*.crt
+*.key
+*.pem
