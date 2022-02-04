@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.status import HTTP_201_CREATED
+from rest_framework.status import HTTP_201_CREATED, HTTP_404_NOT_FOUND
 from django.shortcuts import get_object_or_404
 
 from .models import Profile
@@ -44,3 +44,24 @@ class ProfileView(APIView):
         user_instance = get_object_or_404(Profile, pk=user_id)
         user_instance.delete()
         return Response({'success': True, 'message': f'User profile deleted successfully'})
+
+
+class Custom404View(APIView):
+    """Custom View for unmatch url"""
+
+    data = {
+        'api_urls': ['/api/v1/users/', '/api/v1/users/<int:user_id>'],
+        'message': 'The API endpoint does not exist.'
+    }
+
+    def get(self, request):
+        return Response(self.data, status=HTTP_404_NOT_FOUND)
+
+    def post(self, request):
+        return Response(self.data, status=HTTP_404_NOT_FOUND)
+
+    def put(self, request):
+        return Response(self.data, status=HTTP_404_NOT_FOUND)
+
+    def delete(self, request):
+        return Response(self.data, status=HTTP_404_NOT_FOUND)

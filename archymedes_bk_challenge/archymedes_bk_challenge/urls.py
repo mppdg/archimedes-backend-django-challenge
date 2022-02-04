@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 
-from .views import redirect_api_view
+from user_profile.views import Custom404View
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('user_profile.urls')),
-    re_path(r'^.*/$', redirect_api_view)
+    path('', Custom404View.as_view()),
+    re_path(r'^.*/$', Custom404View.as_view())
 ]
