@@ -20,3 +20,30 @@ class GetAllUsersTest(TestCase):
         serializer = ProfileSerializer(users, many=True)
         self.assertEqual(response.data.get('users'), serializer.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+class CreateUserTest(TestCase):
+    """ Test module for creating a user """
+
+    def setUp(self):
+        self.valid_payload = {
+                'user': {
+                'name': 'Tester Four',
+                'email': 'four@tester.com',
+                'role': 'User'
+            }
+        }
+        self.invalid_payload = {
+                'user': {
+                'name': '',
+                'email': 'four@tester.com',
+                'role': 'Newrole',
+            }
+        }
+
+    def test_create_valid_user(self):
+        response = client.post('/api/v1/users/', data=json.dumps(self.valid_payload), content_type='application/json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_create_invalid_puppy(self):
+        response = client.post('/api/v1/users/', data=json.dumps(self.invalid_payload), content_type='application/json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
